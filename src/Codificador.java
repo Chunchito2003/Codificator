@@ -1,9 +1,10 @@
+package codificador;
 public class Codificador {
 
-    private Diccionario diccionario;
+    private codificador.Diccionario diccionario;
 
     //constructor
-    public Codificador(Diccionario diccionario) {
+    public Codificador(codificador.Diccionario diccionario) {
         this.diccionario = diccionario;
     }
 

@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //instancia de las clases
-        Diccionario diccionario= new Diccionario();
-        Codificador codificador = new Codificador(diccionario);
+        codificador.Diccionario diccionario= new codificador.Diccionario();
+        codificador.Codificador codificador = new codificador.Codificador(diccionario);
 
         //creacion de los elementos para el bucle
         Scanner entrada = new Scanner(System.in);
