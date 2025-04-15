@@ -5,11 +5,12 @@ public class Codificador {
 
     //constructor
     public Codificador(codificador.Diccionario diccionario) {
+
         this.diccionario = diccionario;
     }
 
     public String codificar(String texto){
-        // Convertir el texto a minusculas
+        // Convertir el texto a minusculas para no tener que codificar los valores de las mañusculas
         texto = texto.toLowerCase();
 
         StringBuilder resultado = new StringBuilder();

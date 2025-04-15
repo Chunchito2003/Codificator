@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Diccionario {
-
+    //atributos
     private final Map<Character, Character> diccionario;
     private final Map<Character, Character> diccionarioInverso = new HashMap<>();
 
@@ -11,6 +11,7 @@ public class Diccionario {
     public Diccionario() {
         this.diccionario = new HashMap<>();
         //codificacion simple, a cada caracter se lo reemplaza por otro a eleccion
+        //BASADO EN EL DICCIONARIO ESPAÑOL
         diccionario.put('a','ñ');
         diccionario.put('b','u');
         diccionario.put('c','l');
@@ -43,16 +44,19 @@ public class Diccionario {
         diccionario.put('.','_');
         diccionario.put(',',':');
 
+        //este bucle permite la codificacion inversa, sin la necesidad de hacer otro diccionario
         for (Map.Entry<Character, Character> entry : diccionario.entrySet()) {
             diccionarioInverso.put(entry.getValue(), entry.getKey());
         }
     }
 
     public Character getMapping(Character key) {
+
         return diccionario.get(key);
     }
 
     public Character getInvertedMapping(Character key) {
+
         return diccionarioInverso.get(key);
     }
 }
