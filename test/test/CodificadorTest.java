@@ -2,6 +2,7 @@ package test;
 
 import codificador.Codificador;
 import codificador.Diccionario;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,4 +73,61 @@ public class CodificadorTest {
         String resultado = codificador.decodificar("123$%");
         assertEquals("123$%", resultado); // todos no mapeados
     }
+
+    //Pruebas a Vignere
+    private codificador.Vignere vigenere;
+
+    @BeforeEach
+    public void setUp() {
+        vigenere = new codificador.Vignere();
+    }
+
+    @Test
+    public void testCodificarConEspaciosYSignos() {
+        String resultado = vigenere.codificar("hola mundo!", "sol");
+        assertEquals("zcws affrz!", resultado);
+    }
+
+    @Test
+    public void testDecodificarConEspaciosYSignos() {
+        String resultado = vigenere.decodificar("zcws affrz!", "sol");
+        assertEquals("hola mundo!", resultado);
+    }
+
+    @Test
+    public void testClaveMasCortaQueTexto() {
+        String resultado = vigenere.codificar("ataquealamanecer", "sol");
+        assertEquals("shliipszleoywqpj", resultado);
+    }
+
+    @Test
+    public void testClaveIgualALaLongitudDelTexto() {
+        String resultado = vigenere.codificar("ataqueal", "solclave");
+        assertEquals("shlsfevp", resultado);
+    }
+    @Test
+    public void testClaveIgualALaLongitudDelTextoDecoficar() {
+        String resultado = vigenere.decodificar("shlsfevp", "solclave");
+        assertEquals("ataqueal", resultado);
+    }
+
+    @Test
+    public void testCodificarConCaracteresEspeciales() {
+        String resultado = vigenere.codificar("el precio es $100!", "clave");
+        assertEquals("gw pmieto zw $100!", resultado);
+    }
+
+    @Test
+    public void testDecodificarConCaracteresEspeciales() {
+        String resultado = vigenere.decodificar("gw pmieto zw $100!", "clave");
+        assertEquals("el precio es $100!", resultado);
+    }
+
+    @Test
+    public void testClaveVacia() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            vigenere.codificar("hola", "");
+        });
+    }
+
 }

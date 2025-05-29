@@ -1,8 +1,11 @@
+import codificador.Vignere;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         //instancia de las clases
         codificador.Diccionario diccionario= new codificador.Diccionario();
         codificador.Codificador codificador = new codificador.Codificador(diccionario);
@@ -46,5 +49,13 @@ public class Main {
                 entrada.nextLine(); // Limpiar el bufer
             }
         }
+        /*
+        // Usar el propio algoritmo para obtener el valor correcto
+        String texto = "hola mundo!";
+        String clave = "sol";
+        codificador.Vignere vigenere = new Vignere();
+        System.out.println(vigenere.codificar(texto, clave));
+        */
+
     }
 }

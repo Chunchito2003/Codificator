@@ -9,11 +9,15 @@ public class Codificador {
         this.diccionario = diccionario;
     }
 
+    //Metodo público que recibe un String texto y devuelve otro String.
     public String codificar(String texto){
         // Convertir el texto a minusculas para no tener que codificar los valores de las mañusculas
         texto = texto.toLowerCase();
 
+        //Crea un StringBuilder vacío → aquí irá acumulando el texto codificado
+        //es más eficiente si vas a ir añadiendo muchas letras una por una.
         StringBuilder resultado = new StringBuilder();
+        //recorre el array con un for-each pero de caracteres
         for (char c : texto.toCharArray()) {
             // Obtener el mapeo para el caracter actual
             Character mapped = diccionario.getMapping(c);
@@ -24,6 +28,7 @@ public class Codificador {
                 resultado.append(c);
             }
         }
+        //transforma el  contenido del StringBuilder convertido a String
         return resultado.toString();
     }
 
