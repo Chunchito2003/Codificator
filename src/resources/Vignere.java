@@ -1,4 +1,4 @@
-package codificador;
+package resources;
 public class Vignere {
     /*
      * Cifrado Vigenère:
