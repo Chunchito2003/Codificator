@@ -1,61 +1,28 @@
-import codificador.Vignere;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import resources.Front;
 
 public class Main {
-    public static void main(String[] args) {
-
-        //instancia de las clases
-        codificador.Diccionario diccionario= new codificador.Diccionario();
-        codificador.Codificador codificador = new codificador.Codificador(diccionario);
-
-        //creacion de los elementos para el bucle
-        Scanner entrada = new Scanner(System.in);
-        boolean continuar = true;
-        //variable donde se guarda el texto
-        String texto = "";
-
-        while (continuar) {
-            try {
-                System.out.println("1 para codificar un mensaje\n2 para decodificarlo\n3 para SALIR");
-                int op = entrada.nextInt();
-                entrada.nextLine(); // Consumir el salto de línea
-
-                switch (op) {
-                    case 1:
-                        System.out.println("Ingrese el Mensaje :)");
-                        texto = entrada.nextLine();
-                        texto = codificador.codificar(texto);
-                        System.out.println("Mensaje codificado: " + texto);
-                        break;
-
-                    case 2:
-                        System.out.println("Decodificando el Mensaje :/");
-                        System.out.println("Mensaje decodificado: " + codificador.decodificar(texto));
-                        break;
-
-                    case 3:
-                        System.out.println("Saliendo ....");
-                        continuar = false;
-                        break;
-
-                    default:
-                        System.out.println("Opción no válida.");
-                        break;
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Error: necesitas introducir un número como opción.");
-                entrada.nextLine(); // Limpiar el bufer
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Front.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        /*
-        // Usar el propio algoritmo para obtener el valor correcto
-        String texto = "hola mundo!";
-        String clave = "sol";
-        codificador.Vignere vigenere = new Vignere();
-        System.out.println(vigenere.codificar(texto, clave));
-        */
 
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Front().setVisible(true);
+            }
+        });
     }
 }

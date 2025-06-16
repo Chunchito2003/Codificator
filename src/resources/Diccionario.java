@@ -1,4 +1,4 @@
-package codificador;
+package resources;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,16 +1,16 @@
-package codificador;
+package resources;
 public class Codificador {
 
-    private codificador.Diccionario diccionario;
+    private  Diccionario diccionario;
 
     //constructor
-    public Codificador(codificador.Diccionario diccionario) {
+    public Codificador(Diccionario diccionario) {
 
         this.diccionario = diccionario;
     }
 
     //Metodo público que recibe un String texto y devuelve otro String.
-    public String codificar(String texto){
+    public  String codificar(String texto){
         // Convertir el texto a minusculas para no tener que codificar los valores de las mañusculas
         texto = texto.toLowerCase();
 
@@ -32,7 +32,7 @@ public class Codificador {
         return resultado.toString();
     }
 
-    public String decodificar(String textoCodificado) {
+    public  String decodificar(String textoCodificado) {
         StringBuilder resultado = new StringBuilder();
         for (char c : textoCodificado.toCharArray()) {
             Character original = diccionario.getInvertedMapping(c);
